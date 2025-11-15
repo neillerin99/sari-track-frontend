@@ -10,14 +10,24 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as DashboardRouteRouteImport } from './routes/dashboard/route'
+import { Route as AboutRouteRouteImport } from './routes/about/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
+import { Route as AboutIndexRouteImport } from './routes/about/index'
+import { Route as AboutUserIdRouteImport } from './routes/about/$userId'
+import { Route as AboutJoinUsRouteRouteImport } from './routes/about/join-us/route'
 import { Route as DashboardItemsIndexRouteImport } from './routes/dashboard/items/index'
+import { Route as AboutJoinUsIndexRouteImport } from './routes/about/join-us/index'
 import { Route as DashboardItemsItemIdRouteImport } from './routes/dashboard/items/$itemId'
 
 const DashboardRouteRoute = DashboardRouteRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRouteRoute = AboutRouteRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -30,10 +40,30 @@ const DashboardIndexRoute = DashboardIndexRouteImport.update({
   path: '/',
   getParentRoute: () => DashboardRouteRoute,
 } as any)
+const AboutIndexRoute = AboutIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AboutRouteRoute,
+} as any)
+const AboutUserIdRoute = AboutUserIdRouteImport.update({
+  id: '/$userId',
+  path: '/$userId',
+  getParentRoute: () => AboutRouteRoute,
+} as any)
+const AboutJoinUsRouteRoute = AboutJoinUsRouteRouteImport.update({
+  id: '/join-us',
+  path: '/join-us',
+  getParentRoute: () => AboutRouteRoute,
+} as any)
 const DashboardItemsIndexRoute = DashboardItemsIndexRouteImport.update({
   id: '/items/',
   path: '/items/',
   getParentRoute: () => DashboardRouteRoute,
+} as any)
+const AboutJoinUsIndexRoute = AboutJoinUsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AboutJoinUsRouteRoute,
 } as any)
 const DashboardItemsItemIdRoute = DashboardItemsItemIdRouteImport.update({
   id: '/items/$itemId',
@@ -43,46 +73,77 @@ const DashboardItemsItemIdRoute = DashboardItemsItemIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRouteRouteWithChildren
   '/dashboard': typeof DashboardRouteRouteWithChildren
+  '/about/join-us': typeof AboutJoinUsRouteRouteWithChildren
+  '/about/$userId': typeof AboutUserIdRoute
+  '/about/': typeof AboutIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/dashboard/items/$itemId': typeof DashboardItemsItemIdRoute
+  '/about/join-us/': typeof AboutJoinUsIndexRoute
   '/dashboard/items': typeof DashboardItemsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about/$userId': typeof AboutUserIdRoute
+  '/about': typeof AboutIndexRoute
   '/dashboard': typeof DashboardIndexRoute
   '/dashboard/items/$itemId': typeof DashboardItemsItemIdRoute
+  '/about/join-us': typeof AboutJoinUsIndexRoute
   '/dashboard/items': typeof DashboardItemsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRouteRouteWithChildren
   '/dashboard': typeof DashboardRouteRouteWithChildren
+  '/about/join-us': typeof AboutJoinUsRouteRouteWithChildren
+  '/about/$userId': typeof AboutUserIdRoute
+  '/about/': typeof AboutIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/dashboard/items/$itemId': typeof DashboardItemsItemIdRoute
+  '/about/join-us/': typeof AboutJoinUsIndexRoute
   '/dashboard/items/': typeof DashboardItemsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/dashboard'
+    | '/about/join-us'
+    | '/about/$userId'
+    | '/about/'
     | '/dashboard/'
     | '/dashboard/items/$itemId'
+    | '/about/join-us/'
     | '/dashboard/items'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/dashboard/items/$itemId' | '/dashboard/items'
+  to:
+    | '/'
+    | '/about/$userId'
+    | '/about'
+    | '/dashboard'
+    | '/dashboard/items/$itemId'
+    | '/about/join-us'
+    | '/dashboard/items'
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/dashboard'
+    | '/about/join-us'
+    | '/about/$userId'
+    | '/about/'
     | '/dashboard/'
     | '/dashboard/items/$itemId'
+    | '/about/join-us/'
     | '/dashboard/items/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRouteRoute: typeof AboutRouteRouteWithChildren
   DashboardRouteRoute: typeof DashboardRouteRouteWithChildren
 }
 
@@ -93,6 +154,13 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -109,12 +177,40 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardIndexRouteImport
       parentRoute: typeof DashboardRouteRoute
     }
+    '/about/': {
+      id: '/about/'
+      path: '/'
+      fullPath: '/about/'
+      preLoaderRoute: typeof AboutIndexRouteImport
+      parentRoute: typeof AboutRouteRoute
+    }
+    '/about/$userId': {
+      id: '/about/$userId'
+      path: '/$userId'
+      fullPath: '/about/$userId'
+      preLoaderRoute: typeof AboutUserIdRouteImport
+      parentRoute: typeof AboutRouteRoute
+    }
+    '/about/join-us': {
+      id: '/about/join-us'
+      path: '/join-us'
+      fullPath: '/about/join-us'
+      preLoaderRoute: typeof AboutJoinUsRouteRouteImport
+      parentRoute: typeof AboutRouteRoute
+    }
     '/dashboard/items/': {
       id: '/dashboard/items/'
       path: '/items'
       fullPath: '/dashboard/items'
       preLoaderRoute: typeof DashboardItemsIndexRouteImport
       parentRoute: typeof DashboardRouteRoute
+    }
+    '/about/join-us/': {
+      id: '/about/join-us/'
+      path: '/'
+      fullPath: '/about/join-us/'
+      preLoaderRoute: typeof AboutJoinUsIndexRouteImport
+      parentRoute: typeof AboutJoinUsRouteRoute
     }
     '/dashboard/items/$itemId': {
       id: '/dashboard/items/$itemId'
@@ -125,6 +221,33 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface AboutJoinUsRouteRouteChildren {
+  AboutJoinUsIndexRoute: typeof AboutJoinUsIndexRoute
+}
+
+const AboutJoinUsRouteRouteChildren: AboutJoinUsRouteRouteChildren = {
+  AboutJoinUsIndexRoute: AboutJoinUsIndexRoute,
+}
+
+const AboutJoinUsRouteRouteWithChildren =
+  AboutJoinUsRouteRoute._addFileChildren(AboutJoinUsRouteRouteChildren)
+
+interface AboutRouteRouteChildren {
+  AboutJoinUsRouteRoute: typeof AboutJoinUsRouteRouteWithChildren
+  AboutUserIdRoute: typeof AboutUserIdRoute
+  AboutIndexRoute: typeof AboutIndexRoute
+}
+
+const AboutRouteRouteChildren: AboutRouteRouteChildren = {
+  AboutJoinUsRouteRoute: AboutJoinUsRouteRouteWithChildren,
+  AboutUserIdRoute: AboutUserIdRoute,
+  AboutIndexRoute: AboutIndexRoute,
+}
+
+const AboutRouteRouteWithChildren = AboutRouteRoute._addFileChildren(
+  AboutRouteRouteChildren,
+)
 
 interface DashboardRouteRouteChildren {
   DashboardIndexRoute: typeof DashboardIndexRoute
@@ -144,6 +267,7 @@ const DashboardRouteRouteWithChildren = DashboardRouteRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRouteRoute: AboutRouteRouteWithChildren,
   DashboardRouteRoute: DashboardRouteRouteWithChildren,
 }
 export const routeTree = rootRouteImport
