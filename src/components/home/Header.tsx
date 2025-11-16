@@ -1,38 +1,38 @@
-import { Moon, Sun } from "lucide-react";
-
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { useTheme } from "../providers/theme-provider";
+import { useNavigate } from "@tanstack/react-router";
+import { Button } from "../ui/button";
+import ThemeToggle from "../utils/ThemeToggle";
 
 export default function Header() {
-  const { setTheme } = useTheme();
+  const navigate = useNavigate();
   return (
-    <header className="h-20">
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="outline" size="icon">
-            <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-            <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
-            <span className="sr-only">Toggle theme</span>
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          <DropdownMenuItem onClick={() => setTheme("light")}>
-            Light
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setTheme("dark")}>
-            Dark
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setTheme("system")}>
-            System
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+    <header className="h-14 bg-background flex items-center justify-between p-4">
+      <span className="text-2xl font-bold bg-linear-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent">
+        SariTrack
+      </span>
+      <div className="ml-auto flex items-center gap-2">
+        <ThemeToggle />
+        <Button
+          className="cursor-pointer"
+          variant={"ghost"}
+          onClick={() =>
+            navigate({
+              to: "/about",
+            })
+          }
+        >
+          Login
+        </Button>
+        <Button
+          className="cursor-pointer"
+          onClick={() =>
+            navigate({
+              to: "/about",
+            })
+          }
+        >
+          Get Started
+        </Button>
+      </div>
     </header>
   );
 }

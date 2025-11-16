@@ -8,7 +8,7 @@ export const Route = createFileRoute("/")({
 
 function App() {
   return (
-    <div className="text-center flex flex-col">
+    <div className="flex flex-col bg-red-500 min-h-full">
       <Header />
       <button className="bg-primary text-primary-foreground hover:bg-primary/90">
         Click Me
