@@ -16,7 +16,7 @@ export default function Header() {
   return (
     <header className="h-18 bg-background flex items-center justify-center w-full">
       <Wrapper className="flex items-center">
-        <span className="text-2xl font-bold bg-linear-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent">
+        <span className="text-2xl font-bold bg-linear-to-r from-(--text-gradient-from) to-(--text-gradient-to) dark:from-(--text-gradient-from) dark:to-(--text-gradient-to) bg-clip-text text-transparent">
           SariTrack
         </span>
         <div className="ml-auto flex items-center gap-2">
