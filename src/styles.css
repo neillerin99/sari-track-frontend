@@ -98,6 +98,9 @@ code {
   --gradient-from:  #eff6ff; /* blue-50 */
   --gradient-via:   #ecfeff; /* cyan-50 */
   --gradient-to:    #f0f9ff; /* sky-50 */
+
+  --text-gradient-from: #60a5fa; /* blue-400 */
+  --text-gradient-to:   #22d3ee; /* cyan-400 */
 }
 
 .dark {
@@ -141,6 +144,9 @@ code {
   --gradient-from: #111827; /* gray-900 */
   --gradient-via:  #1e3a8a; /* blue-950 */
   --gradient-to:   #0f172a; /* slate-900 */
+
+  --text-gradient-from: #2563eb; /* blue-600 */
+  --text-gradient-to:   #0891b2; /* cyan-600 */
 }
 
 @layer base {
