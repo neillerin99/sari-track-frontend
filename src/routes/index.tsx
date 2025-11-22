@@ -1,5 +1,5 @@
 import Header from "@/components/home/Header";
-import { Button } from "@/components/ui/button";
+import Hero from "@/components/home/Hero";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
@@ -8,15 +8,12 @@ export const Route = createFileRoute("/")({
 
 function App() {
   return (
-    <div className="flex flex-col bg-red-500 min-h-full items-center">
-      <Header />
-      <button className="bg-primary text-primary-foreground hover:bg-primary/90">
-        Click Me
-      </button>
-      <Button className="cursor-pointer" variant={"outline"}>
-        Click Me
-      </Button>
-      hello world
+    <div className="bg-background min-h-full items-center overflow-auto">
+      <div className="h-screen bg-background w-full">
+        <Header />
+        <Hero />
+      </div>
+      <div className="h-20 bg-yellow-500"></div>
     </div>
   );
 }

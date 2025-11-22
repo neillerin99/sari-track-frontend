@@ -14,7 +14,7 @@ import Wrapper from "../utils/Wrapper";
 export default function Header() {
   const navigate = useNavigate();
   return (
-    <header className="h-14 bg-background flex items-center justify-center p-4 w-full">
+    <header className="h-18 bg-background flex items-center justify-center w-full">
       <Wrapper className="flex items-center">
         <span className="text-2xl font-bold bg-linear-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent">
           SariTrack

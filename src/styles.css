@@ -94,6 +94,10 @@ code {
   --sidebar-accent-foreground: hsl(24 74% 58%);
   --sidebar-border: hsl(24 30% 91%);
   --sidebar-ring: hsl(24 74% 58%);
+
+  --gradient-from:  #eff6ff; /* blue-50 */
+  --gradient-via:   #ecfeff; /* cyan-50 */
+  --gradient-to:    #f0f9ff; /* sky-50 */
 }
 
 .dark {
@@ -133,6 +137,10 @@ code {
   --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
   --sidebar-border: hsl(240 3.7% 15.9%);
   --sidebar-ring: hsl(24 74% 58%);
+
+  --gradient-from: #111827; /* gray-900 */
+  --gradient-via:  #1e3a8a; /* blue-950 */
+  --gradient-to:   #0f172a; /* slate-900 */
 }
 
 @layer base {
