@@ -9,7 +9,7 @@ export const Route = createFileRoute("/")({
 function App() {
   return (
     <div className="bg-background min-h-full items-center overflow-auto">
-      <div className="bg-background w-full flex flex-col h-full">
+      <div className="bg-background w-full flex flex-col sm:h-full h-fit">
         <Header />
         <Hero />
       </div>

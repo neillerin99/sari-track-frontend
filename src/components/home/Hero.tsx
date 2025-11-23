@@ -4,7 +4,7 @@ import Wrapper from "../utils/Wrapper";
 export default function Hero() {
   return (
     <div className="p-4 h-full bg-linear-to-br from-(--gradient-from) via-(--gradient-via) to-(--gradient-to) transition-colors duration-300 flex-1">
-      <Wrapper className="h-full flex sm:flex-row flex-col  items-center justify-start">
+      <Wrapper className="h-full flex sm:flex-row flex-col  items-center justify-start sm:py-0 py-5 sm:gap-5 gap-10">
         <InfoSection />
         <InfoSection />
       </Wrapper>
