@@ -4,7 +4,7 @@ import Wrapper from "../utils/Wrapper";
 export default function Hero() {
   return (
     <div className="p-4 h-full bg-linear-to-br from-(--gradient-from) via-(--gradient-via) to-(--gradient-to) transition-colors duration-300 flex-1">
-      <Wrapper className="h-full flex items-center justify-start">
+      <Wrapper className="h-full flex sm:flex-row flex-col  items-center justify-start">
         <InfoSection />
         <InfoSection />
       </Wrapper>
@@ -26,6 +26,10 @@ function InfoSection() {
         </span>
         with Ease
       </h1>
+      <p className="text-xl text-gray-700 dark:text-gray-300">
+        Complete point of sale and inventory management system designed
+        specifically for sari-sari stores. Simple, fast, and powerful.
+      </p>
       hello world
     </div>
   );
