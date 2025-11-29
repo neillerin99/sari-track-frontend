@@ -11,7 +11,7 @@ interface CountUpProps {
 
 export default function CountUp({
   target = 100,
-  duration = 1,
+  duration = 2,
   text = "",
 }: CountUpProps) {
   const count = useMotionValue(0);
@@ -33,6 +33,7 @@ export default function CountUp({
       style={{
         fontSize: "2rem",
         fontWeight: "bold",
+        color: "#22d3ee",
       }}
     >
       {display}
