@@ -27,7 +27,7 @@ export default function Header() {
               variant={"ghost"}
               onClick={() =>
                 navigate({
-                  to: "/about",
+                  to: "/login",
                 })
               }
             >

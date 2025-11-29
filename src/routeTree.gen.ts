@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as DashboardRouteRouteImport } from './routes/dashboard/route'
 import { Route as AboutRouteRouteImport } from './routes/about/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LoginIndexRouteImport } from './routes/login/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
 import { Route as AboutIndexRouteImport } from './routes/about/index'
 import { Route as AboutUserIdRouteImport } from './routes/about/$userId'
@@ -33,6 +34,11 @@ const AboutRouteRoute = AboutRouteRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginIndexRoute = LoginIndexRouteImport.update({
+  id: '/login/',
+  path: '/login/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardIndexRoute = DashboardIndexRouteImport.update({
@@ -79,6 +85,7 @@ export interface FileRoutesByFullPath {
   '/about/$userId': typeof AboutUserIdRoute
   '/about/': typeof AboutIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/login': typeof LoginIndexRoute
   '/dashboard/items/$itemId': typeof DashboardItemsItemIdRoute
   '/about/join-us/': typeof AboutJoinUsIndexRoute
   '/dashboard/items': typeof DashboardItemsIndexRoute
@@ -88,6 +95,7 @@ export interface FileRoutesByTo {
   '/about/$userId': typeof AboutUserIdRoute
   '/about': typeof AboutIndexRoute
   '/dashboard': typeof DashboardIndexRoute
+  '/login': typeof LoginIndexRoute
   '/dashboard/items/$itemId': typeof DashboardItemsItemIdRoute
   '/about/join-us': typeof AboutJoinUsIndexRoute
   '/dashboard/items': typeof DashboardItemsIndexRoute
@@ -101,6 +109,7 @@ export interface FileRoutesById {
   '/about/$userId': typeof AboutUserIdRoute
   '/about/': typeof AboutIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/login/': typeof LoginIndexRoute
   '/dashboard/items/$itemId': typeof DashboardItemsItemIdRoute
   '/about/join-us/': typeof AboutJoinUsIndexRoute
   '/dashboard/items/': typeof DashboardItemsIndexRoute
@@ -115,6 +124,7 @@ export interface FileRouteTypes {
     | '/about/$userId'
     | '/about/'
     | '/dashboard/'
+    | '/login'
     | '/dashboard/items/$itemId'
     | '/about/join-us/'
     | '/dashboard/items'
@@ -124,6 +134,7 @@ export interface FileRouteTypes {
     | '/about/$userId'
     | '/about'
     | '/dashboard'
+    | '/login'
     | '/dashboard/items/$itemId'
     | '/about/join-us'
     | '/dashboard/items'
@@ -136,6 +147,7 @@ export interface FileRouteTypes {
     | '/about/$userId'
     | '/about/'
     | '/dashboard/'
+    | '/login/'
     | '/dashboard/items/$itemId'
     | '/about/join-us/'
     | '/dashboard/items/'
@@ -145,6 +157,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRouteRoute: typeof AboutRouteRouteWithChildren
   DashboardRouteRoute: typeof DashboardRouteRouteWithChildren
+  LoginIndexRoute: typeof LoginIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -168,6 +181,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login/': {
+      id: '/login/'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard/': {
@@ -269,6 +289,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRouteRoute: AboutRouteRouteWithChildren,
   DashboardRouteRoute: DashboardRouteRouteWithChildren,
+  LoginIndexRoute: LoginIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
