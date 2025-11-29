@@ -57,8 +57,23 @@ function InfoSection() {
           Watch Demo
         </Button>
       </div>
-      <div className="flex gap-8">
-        <CountUp target={500} text="+" />
+      <div className="flex gap-15">
+        <div className="flex flex-col">
+          <CountUp target={500} text="+" />
+          <p className="text-xs text-gray-700 dark:text-gray-300">
+            Active Stores
+          </p>
+        </div>
+        <div className="flex flex-col">
+          <CountUp target={50} text="k+" />
+          <p className="text-xs text-gray-700 dark:text-gray-300">
+            Transactions
+          </p>
+        </div>
+        <div className="flex flex-col">
+          <CountUp target={99} text="%" />
+          <p className="text-xs text-gray-700 dark:text-gray-300">Uptime</p>
+        </div>
       </div>
     </div>
   );
