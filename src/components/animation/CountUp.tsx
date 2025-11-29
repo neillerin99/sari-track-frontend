@@ -3,7 +3,7 @@
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect, useState } from "react";
 
-interface CountUpProps {
+export interface CountUpProps {
   target?: number;
   duration?: number;
   text?: string;
@@ -33,7 +33,7 @@ export default function CountUp({
       style={{
         fontSize: "2rem",
         fontWeight: "bold",
-        color: "#22d3ee",
+        color: "#60a5fa",
       }}
     >
       {display}

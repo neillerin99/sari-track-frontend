@@ -4,11 +4,12 @@ import Chip from "../ui/chip";
 import Wrapper from "../utils/Wrapper";
 import CountUp from "../animation/CountUp";
 import { Clock, TrendingUp } from "lucide-react";
+import StatsCard from "../ui/stats-card";
 
 export default function Hero() {
   return (
     <div className="p-4 min-h-fit bg-linear-to-br from-(--gradient-from) via-(--gradient-via) to-(--gradient-to) transition-colors duration-300  bg-blend-soft-light">
-      <Wrapper className="flex lg:flex-row flex-col  items-center justify-start sm:py-0 py-5 lg:gap-7 md:gap-15 gap-14 lg:my-34 md:my-20 my-14">
+      <Wrapper className="flex lg:flex-row flex-col  items-center justify-start sm:py-0 py-5 lg:gap-7 md:gap-15 gap-14 lg:my-34 md:my-20 my-1">
         <InfoSection />
         <StatsSection />
       </Wrapper>
@@ -59,22 +60,9 @@ function InfoSection() {
         </Button>
       </div>
       <div className="flex sm:gap-15 gap-10">
-        <div className="flex flex-col">
-          <CountUp target={500} text="+" />
-          <p className="text-xs text-gray-700 dark:text-gray-300">
-            Active Stores
-          </p>
-        </div>
-        <div className="flex flex-col">
-          <CountUp target={50} text="k+" />
-          <p className="text-xs text-gray-700 dark:text-gray-300">
-            Transactions
-          </p>
-        </div>
-        <div className="flex flex-col">
-          <CountUp target={99} text="%" />
-          <p className="text-xs text-gray-700 dark:text-gray-300">Uptime</p>
-        </div>
+        <StatsCard text="+" target={500} statsText="Active Stores" />
+        <StatsCard text="k+" target={50} statsText="Transactions" />
+        <StatsCard text="%" target={99} statsText="Uptime" />
       </div>
     </div>
   );
@@ -83,11 +71,11 @@ function InfoSection() {
 function StatsSection() {
   return (
     <div className="flex-1 flex items-center justify-center w-full min-h-64 lg:min-h-[400px] rounded-2xl relative bg-white dark:bg-gray-800 border border-blue-100 dark:border-gray-700">
-      <div className="bg-red-500 p-4 rounded-3xl shadow-xl absolute -top-10 -right-4">
-        <TrendingUp className="h-10 w-10 " />
+      <div className="bg-linear-to-r from-(--text-gradient-from) to-(--text-gradient-to) dark:from-(--text-gradient-from) dark:to-(--text-gradient-to) p-4 rounded-3xl shadow-xl absolute -top-10 -right-4">
+        <TrendingUp className="h-10 w-10 text-white" />
       </div>
-      <div className="bg-primary p-4 rounded-3xl shadow-xl absolute -bottom-10 -left-5">
-        <Clock className="h-10 w-10" />
+      <div className="bg-linear-to-r from-(--text-gradient-from) to-(--text-gradient-to) dark:from-(--text-gradient-from) dark:to-(--text-gradient-to) p-4 rounded-3xl shadow-xl absolute -bottom-10 -left-5">
+        <Clock className="h-10 w-10 text-white" />
       </div>
       hello
     </div>
