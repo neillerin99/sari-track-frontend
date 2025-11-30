@@ -14,8 +14,8 @@ import Wrapper from "../utils/Wrapper";
 export default function Header() {
   const navigate = useNavigate();
   return (
-    <header className="h-18 bg-background flex items-center justify-center w-full">
-      <Wrapper className="flex items-center">
+    <nav className="h-18 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md flex items-center justify-center w-full sticky top-0 z-1 border-b border-blue-100 dark:border-gray-800">
+      <Wrapper className="flex items-center ">
         <span className="text-2xl font-bold bg-linear-to-r from-(--text-gradient-from) to-(--text-gradient-to) dark:from-(--text-gradient-from) dark:to-(--text-gradient-to) bg-clip-text text-transparent">
           SariTrack
         </span>
@@ -27,7 +27,7 @@ export default function Header() {
               variant={"ghost"}
               onClick={() =>
                 navigate({
-                  to: "/about",
+                  to: "/login",
                 })
               }
             >
@@ -47,7 +47,7 @@ export default function Header() {
           <MobileSheet />
         </div>
       </Wrapper>
-    </header>
+    </nav>
   );
 }
 

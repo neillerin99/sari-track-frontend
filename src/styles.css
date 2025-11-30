@@ -101,6 +101,8 @@ code {
 
   --text-gradient-from: #60a5fa; /* blue-400 */
   --text-gradient-to:   #22d3ee; /* cyan-400 */
+
+  --subtext: #364153;
 }
 
 .dark {
@@ -142,11 +144,13 @@ code {
   --sidebar-ring: hsl(24 74% 58%);
 
   --gradient-from: #111827; /* gray-900 */
-  --gradient-via:  #1e3a8a; /* blue-950 */
-  --gradient-to:   #0f172a; /* slate-900 */
+  --gradient-via:  #101e4d; /* blue-950 */
+  --gradient-to:   #0F172A; /* slate-900 */
 
   --text-gradient-from: #2563eb; /* blue-600 */
   --text-gradient-to:   #0891b2; /* cyan-600 */
+
+  --subtext: #d1d5dc;
 }
 
 @layer base {
