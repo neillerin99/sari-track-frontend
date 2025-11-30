@@ -101,6 +101,8 @@ code {
 
   --text-gradient-from: #60a5fa; /* blue-400 */
   --text-gradient-to:   #22d3ee; /* cyan-400 */
+
+  --subtext: #364153;
 }
 
 .dark {
@@ -147,6 +149,8 @@ code {
 
   --text-gradient-from: #2563eb; /* blue-600 */
   --text-gradient-to:   #0891b2; /* cyan-600 */
+
+  --subtext: #d1d5dc;
 }
 
 @layer base {

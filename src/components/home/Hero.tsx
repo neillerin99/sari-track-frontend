@@ -32,7 +32,7 @@ function InfoSection() {
         </span>
         with Ease
       </h1>
-      <p className="text-xl text-gray-700 dark:text-gray-300">
+      <p className="text-xl text-(--subtext)">
         Complete point of sale and inventory management system designed
         specifically for sari-sari stores. Simple, fast, and powerful.
       </p>
@@ -80,7 +80,7 @@ function StatsSection() {
             <ShoppingCart className="h-6 w-6" />
           </StatsRow.Icon>
           <StatsRow.Body>
-            <p className="text-gray-700 dark:text-gray-300">Today's Sales</p>
+            <p className="text-(--subtext)">Today's Sales</p>
             <h2 className="font-bold text-2xl">₱12,450</h2>
           </StatsRow.Body>
           <StatsRow.Indicator variant={"positive"}>+15%</StatsRow.Indicator>
@@ -90,17 +90,17 @@ function StatsSection() {
             <Package className="h-6 w-6" />
           </StatsRow.Icon>
           <StatsRow.Body>
-            <p className="text-gray-700 dark:text-gray-300">Products</p>
+            <p className="text-(--subtext)">Products</p>
             <h2 className="font-bold text-2xl">248</h2>
           </StatsRow.Body>
           <StatsRow.Indicator variant={"warning"}>12 low</StatsRow.Indicator>
         </StatsRow>
-        <StatsRow className="bg-gradient-to-r from-sky-50 to-blue-50 dark:from-sky-900/30 dark:to-blue-900/30 border border-sky-100 dark:border-sky-800">
+        <StatsRow className="bg-linear-to-r from-sky-50 to-blue-50 dark:from-sky-900/30 dark:to-blue-900/30 border border-sky-100 dark:border-sky-800">
           <StatsRow.Icon className="bg-sky-100 dark:bg-sky-900">
             <Users className="h-6 w-6" />
           </StatsRow.Icon>
           <StatsRow.Body>
-            <p className="text-gray-700 dark:text-gray-300">Customers</p>
+            <p className="text-(--subtext)">Customers</p>
             <h2 className="font-bold text-2xl">156</h2>
           </StatsRow.Body>
           <StatsRow.Indicator variant={"positive"}>+8</StatsRow.Indicator>
