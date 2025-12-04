@@ -1,10 +1,10 @@
 import { useNavigate } from "@tanstack/react-router";
-import { Button } from "../ui/button";
-import Chip from "../ui/chip";
-import Wrapper from "../utils/Wrapper";
+import { Button } from "../../../components/ui/button";
+import Chip from "../../../components/ui/chip";
+import Wrapper from "../../../components/common/Wrapper";
 import { Clock, Package, ShoppingCart, TrendingUp, Users } from "lucide-react";
-import StatsCard from "../ui/stats-card";
-import StatsRow from "../ui/stats-row";
+import StatsCard from "../../../components/ui/stats-card";
+import StatsRow from "../../../components/ui/stats-row";
 
 export default function Hero() {
   return (

@@ -1,6 +1,6 @@
-import Feature from "@/components/home/Feature";
-import Header from "@/components/home/Header";
-import Hero from "@/components/home/Hero";
+import Feature from "@/features/home/components/Feature";
+import Header from "@/features/home/components/Header";
+import Hero from "@/features/home/components/Hero";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
