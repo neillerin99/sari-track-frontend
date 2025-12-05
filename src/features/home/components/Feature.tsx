@@ -1,5 +1,5 @@
-import FeatureCard from "../ui/feature-card";
-import { features, type Feature } from "@/utils/features";
+import FeatureCard from "../../../components/ui/feature-card";
+import { features, type Feature } from "@/features/home/utils/features";
 
 export default function Feature() {
   return (

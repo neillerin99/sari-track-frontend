@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import Header from "@/components/dashboard/header";
+import Header from "@/features/dashboard/components/header";
 import z from "zod";
 
 const searchSchema = z.object({
