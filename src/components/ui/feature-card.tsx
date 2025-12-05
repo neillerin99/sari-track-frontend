@@ -30,7 +30,7 @@ FeatureCard.Icon = function FeatureCardIcon({
   return (
     <div
       className={cn(
-        "bg-linear-to-br from-blue-500 to-cyan-600 dark:from-blue-600 dark:to-cyan-500 w-fit p-4 rounded-xl",
+        "bg-linear-to-br from-blue-500 to-cyan-600 dark:from-blue-600 dark:to-cyan-500 w-fit p-4 rounded-xl text-white",
         className
       )}
     >
