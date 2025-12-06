@@ -1,3 +1,4 @@
+import Header from "@/features/common/sections/Header";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/login/")({
@@ -5,5 +6,10 @@ export const Route = createFileRoute("/login/")({
 });
 
 function RouteComponent() {
-  return <div>Hello login page</div>;
+  return (
+    <div className="flex flex-col">
+      <Header />
+      Hello login page
+    </div>
+  );
 }

@@ -1,5 +1,5 @@
 import Wrapper from "@/components/common/Wrapper";
-import FeatureCard from "../../../components/ui/feature-card";
+import FeatureCard from "../../../../components/ui/feature-card";
 import { features, type Feature } from "@/features/home/utils/features";
 
 export default function Feature() {

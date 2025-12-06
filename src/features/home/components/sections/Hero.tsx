@@ -1,10 +1,10 @@
 import { useNavigate } from "@tanstack/react-router";
-import { Button } from "../../../components/ui/button";
-import Chip from "../../../components/ui/chip";
-import Wrapper from "../../../components/common/Wrapper";
+import { Button } from "../../../../components/ui/button";
+import Chip from "../../../../components/ui/chip";
+import Wrapper from "../../../../components/common/Wrapper";
 import { Clock, Package, ShoppingCart, TrendingUp, Users } from "lucide-react";
-import StatsCard from "../../../components/ui/stats-card";
-import StatsRow from "../../../components/ui/stats-row";
+import StatsCard from "../../../../components/ui/stats-card";
+import StatsRow from "../../../../components/ui/stats-row";
 
 export default function Hero() {
   return (
@@ -38,7 +38,7 @@ function InfoSection() {
       </p>
       <div className="flex gap-4">
         <Button
-          className="cursor-pointer px-4 py-6 font-bold text-lg bg-linear-to-r from-(--text-gradient-from) to-(--text-gradient-to) dark:from-(--text-gradient-from) dark:to-(--text-gradient-to)"
+          className="cursor-pointer px-4 py-6 font-bold text-lg bg-linear-to-r from-(--text-gradient-from) to-(--text-gradient-to) dark:from-(--text-gradient-from) dark:to-(--text-gradient-to) hover:scale-105"
           onClick={() =>
             navigate({
               to: "/about",
@@ -48,7 +48,7 @@ function InfoSection() {
           Start Now
         </Button>
         <Button
-          className="cursor-pointer px-4 py-6 font-bold text-lg hover:bg-input/50 border-primary dark:border-primary"
+          className="cursor-pointer px-4 py-6 font-bold text-lg hover:bg-input/50 border-primary dark:border-primary hover:scale-105"
           variant={"outline"}
           onClick={() =>
             navigate({
