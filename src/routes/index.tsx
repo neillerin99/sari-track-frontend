@@ -1,3 +1,4 @@
+import Action from "@/features/home/components/sections/Action";
 import Benefits from "@/features/home/components/sections/Benefits";
 import Feature from "@/features/home/components/sections/Feature";
 import Header from "@/features/home/components/sections/Header";
@@ -26,6 +27,7 @@ function App() {
       <Hero />
       <Feature />
       <Benefits />
+      <Action />
       asd asd asdasd asd
       <div className="h-20 bg-yellow-500"></div>
     </section>
