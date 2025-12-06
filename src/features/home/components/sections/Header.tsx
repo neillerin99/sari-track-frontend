@@ -16,12 +16,19 @@ export default function Header() {
   return (
     <nav className="h-18 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md flex items-center justify-center w-full sticky top-0 z-1 border-b border-blue-100 dark:border-gray-800">
       <Wrapper className="flex items-center ">
-        <span className="text-2xl font-bold bg-linear-to-r from-(--text-gradient-from) to-(--text-gradient-to) dark:from-(--text-gradient-from) dark:to-(--text-gradient-to) bg-clip-text text-transparent">
+        <Button
+          className="text-2xl font-bold bg-linear-to-r from-(--text-gradient-from) to-(--text-gradient-to) dark:from-(--text-gradient-from) dark:to-(--text-gradient-to) bg-clip-text text-transparent cursor-pointer"
+          onClick={() =>
+            navigate({
+              to: "/",
+            })
+          }
+        >
           SariTrack
-        </span>
+        </Button>
         <div className="ml-auto flex items-center gap-2">
           <ThemeToggle />
-          <div className="sm:flex hidden">
+          <div className="sm:flex hidden gap-2">
             <Button
               className="cursor-pointer"
               variant={"ghost"}
