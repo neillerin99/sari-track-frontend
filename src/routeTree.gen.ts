@@ -11,14 +11,16 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as DashboardRouteRouteImport } from './routes/dashboard/route'
 import { Route as AboutRouteRouteImport } from './routes/about/route'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as landingRouteRouteImport } from './routes/(landing)/route'
 import { Route as LoginIndexRouteImport } from './routes/login/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
 import { Route as AboutIndexRouteImport } from './routes/about/index'
+import { Route as landingIndexRouteImport } from './routes/(landing)/index'
 import { Route as AboutUserIdRouteImport } from './routes/about/$userId'
 import { Route as AboutJoinUsRouteRouteImport } from './routes/about/join-us/route'
 import { Route as DashboardItemsIndexRouteImport } from './routes/dashboard/items/index'
 import { Route as AboutJoinUsIndexRouteImport } from './routes/about/join-us/index'
+import { Route as landingContactUsIndexRouteImport } from './routes/(landing)/contact-us/index'
 import { Route as DashboardItemsItemIdRouteImport } from './routes/dashboard/items/$itemId'
 
 const DashboardRouteRoute = DashboardRouteRouteImport.update({
@@ -31,9 +33,8 @@ const AboutRouteRoute = AboutRouteRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const landingRouteRoute = landingRouteRouteImport.update({
+  id: '/(landing)',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginIndexRoute = LoginIndexRouteImport.update({
@@ -50,6 +51,11 @@ const AboutIndexRoute = AboutIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AboutRouteRoute,
+} as any)
+const landingIndexRoute = landingIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => landingRouteRoute,
 } as any)
 const AboutUserIdRoute = AboutUserIdRouteImport.update({
   id: '/$userId',
@@ -71,6 +77,11 @@ const AboutJoinUsIndexRoute = AboutJoinUsIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AboutJoinUsRouteRoute,
 } as any)
+const landingContactUsIndexRoute = landingContactUsIndexRouteImport.update({
+  id: '/contact-us/',
+  path: '/contact-us/',
+  getParentRoute: () => landingRouteRoute,
+} as any)
 const DashboardItemsItemIdRoute = DashboardItemsItemIdRouteImport.update({
   id: '/items/$itemId',
   path: '/items/$itemId',
@@ -78,83 +89,91 @@ const DashboardItemsItemIdRoute = DashboardItemsItemIdRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
   '/about': typeof AboutRouteRouteWithChildren
   '/dashboard': typeof DashboardRouteRouteWithChildren
   '/about/join-us': typeof AboutJoinUsRouteRouteWithChildren
   '/about/$userId': typeof AboutUserIdRoute
+  '/': typeof landingIndexRoute
   '/about/': typeof AboutIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/login': typeof LoginIndexRoute
   '/dashboard/items/$itemId': typeof DashboardItemsItemIdRoute
+  '/contact-us': typeof landingContactUsIndexRoute
   '/about/join-us/': typeof AboutJoinUsIndexRoute
   '/dashboard/items': typeof DashboardItemsIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
   '/about/$userId': typeof AboutUserIdRoute
+  '/': typeof landingIndexRoute
   '/about': typeof AboutIndexRoute
   '/dashboard': typeof DashboardIndexRoute
   '/login': typeof LoginIndexRoute
   '/dashboard/items/$itemId': typeof DashboardItemsItemIdRoute
+  '/contact-us': typeof landingContactUsIndexRoute
   '/about/join-us': typeof AboutJoinUsIndexRoute
   '/dashboard/items': typeof DashboardItemsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
+  '/(landing)': typeof landingRouteRouteWithChildren
   '/about': typeof AboutRouteRouteWithChildren
   '/dashboard': typeof DashboardRouteRouteWithChildren
   '/about/join-us': typeof AboutJoinUsRouteRouteWithChildren
   '/about/$userId': typeof AboutUserIdRoute
+  '/(landing)/': typeof landingIndexRoute
   '/about/': typeof AboutIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/login/': typeof LoginIndexRoute
   '/dashboard/items/$itemId': typeof DashboardItemsItemIdRoute
+  '/(landing)/contact-us/': typeof landingContactUsIndexRoute
   '/about/join-us/': typeof AboutJoinUsIndexRoute
   '/dashboard/items/': typeof DashboardItemsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
     | '/about'
     | '/dashboard'
     | '/about/join-us'
     | '/about/$userId'
+    | '/'
     | '/about/'
     | '/dashboard/'
     | '/login'
     | '/dashboard/items/$itemId'
+    | '/contact-us'
     | '/about/join-us/'
     | '/dashboard/items'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
     | '/about/$userId'
+    | '/'
     | '/about'
     | '/dashboard'
     | '/login'
     | '/dashboard/items/$itemId'
+    | '/contact-us'
     | '/about/join-us'
     | '/dashboard/items'
   id:
     | '__root__'
-    | '/'
+    | '/(landing)'
     | '/about'
     | '/dashboard'
     | '/about/join-us'
     | '/about/$userId'
+    | '/(landing)/'
     | '/about/'
     | '/dashboard/'
     | '/login/'
     | '/dashboard/items/$itemId'
+    | '/(landing)/contact-us/'
     | '/about/join-us/'
     | '/dashboard/items/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
+  landingRouteRoute: typeof landingRouteRouteWithChildren
   AboutRouteRoute: typeof AboutRouteRouteWithChildren
   DashboardRouteRoute: typeof DashboardRouteRouteWithChildren
   LoginIndexRoute: typeof LoginIndexRoute
@@ -176,11 +195,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/(landing)': {
+      id: '/(landing)'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof landingRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login/': {
@@ -203,6 +222,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/about/'
       preLoaderRoute: typeof AboutIndexRouteImport
       parentRoute: typeof AboutRouteRoute
+    }
+    '/(landing)/': {
+      id: '/(landing)/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof landingIndexRouteImport
+      parentRoute: typeof landingRouteRoute
     }
     '/about/$userId': {
       id: '/about/$userId'
@@ -232,6 +258,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutJoinUsIndexRouteImport
       parentRoute: typeof AboutJoinUsRouteRoute
     }
+    '/(landing)/contact-us/': {
+      id: '/(landing)/contact-us/'
+      path: '/contact-us'
+      fullPath: '/contact-us'
+      preLoaderRoute: typeof landingContactUsIndexRouteImport
+      parentRoute: typeof landingRouteRoute
+    }
     '/dashboard/items/$itemId': {
       id: '/dashboard/items/$itemId'
       path: '/items/$itemId'
@@ -241,6 +274,20 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface landingRouteRouteChildren {
+  landingIndexRoute: typeof landingIndexRoute
+  landingContactUsIndexRoute: typeof landingContactUsIndexRoute
+}
+
+const landingRouteRouteChildren: landingRouteRouteChildren = {
+  landingIndexRoute: landingIndexRoute,
+  landingContactUsIndexRoute: landingContactUsIndexRoute,
+}
+
+const landingRouteRouteWithChildren = landingRouteRoute._addFileChildren(
+  landingRouteRouteChildren,
+)
 
 interface AboutJoinUsRouteRouteChildren {
   AboutJoinUsIndexRoute: typeof AboutJoinUsIndexRoute
@@ -286,7 +333,7 @@ const DashboardRouteRouteWithChildren = DashboardRouteRoute._addFileChildren(
 )
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+  landingRouteRoute: landingRouteRouteWithChildren,
   AboutRouteRoute: AboutRouteRouteWithChildren,
   DashboardRouteRoute: DashboardRouteRouteWithChildren,
   LoginIndexRoute: LoginIndexRoute,

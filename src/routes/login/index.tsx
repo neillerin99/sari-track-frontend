@@ -1,4 +1,4 @@
-import Header from "@/features/home/components/sections/Header";
+import Header from "@/features/common/sections/Header";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/login/")({
