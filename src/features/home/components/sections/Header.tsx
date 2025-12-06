@@ -1,6 +1,6 @@
 import { useNavigate } from "@tanstack/react-router";
-import { Button } from "../../../components/ui/button";
-import ThemeToggle from "../../../components/common/ThemeToggle";
+import { Button } from "../../../../components/ui/button";
+import ThemeToggle from "../../../../components/common/ThemeToggle";
 import { Menu } from "lucide-react";
 import {
   Sheet,
@@ -9,7 +9,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import Wrapper from "../../../components/common/Wrapper";
+import Wrapper from "../../../../components/common/Wrapper";
 
 export default function Header() {
   const navigate = useNavigate();

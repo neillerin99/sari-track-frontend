@@ -1,9 +1,9 @@
 import Wrapper from "@/components/common/Wrapper";
-import { benefits } from "../utils/benefits";
-import BenefitsRow from "./BenefitsRow";
-import { testimonials } from "../utils/testimonial";
-import type { BenefitTestimonial } from "../../../models/Testimonial";
-import BenefitsTestimonialRow from "./BenefitsTestimonialRow";
+import { benefits } from "../../utils/benefits";
+import BenefitsRow from "../ui/BenefitsRow";
+import { testimonials } from "../../utils/testimonial";
+import type { BenefitTestimonial } from "../../../../models/Testimonial";
+import BenefitsTestimonialRow from "../ui/BenefitsTestimonialRow";
 
 export default function Benefits() {
   return (

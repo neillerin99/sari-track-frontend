@@ -1,5 +1,5 @@
 import { Store } from "lucide-react";
-import type { BenefitTestimonial } from "../../../models/Testimonial";
+import type { BenefitTestimonial } from "../../../../models/Testimonial";
 
 export default function BenefitsTestimonialRow({
   storeName,

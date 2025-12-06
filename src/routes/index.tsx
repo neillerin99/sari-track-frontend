@@ -1,7 +1,7 @@
-import Benefits from "@/features/home/components/Benefits";
-import Feature from "@/features/home/components/Feature";
-import Header from "@/features/home/components/Header";
-import Hero from "@/features/home/components/Hero";
+import Benefits from "@/features/home/components/sections/Benefits";
+import Feature from "@/features/home/components/sections/Feature";
+import Header from "@/features/home/components/sections/Header";
+import Hero from "@/features/home/components/sections/Hero";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
