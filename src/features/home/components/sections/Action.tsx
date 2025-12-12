@@ -12,7 +12,7 @@ export default function Action() {
         <h2 className="sm:text-5xl text-2xl font-bold text-center">
           Ready to Get Started?
         </h2>
-        <p className="sm:text-xl text-lg text-(--subtext) text-center w-[650px]">
+        <p className="sm:text-xl text-lg text-(--subtext) text-center lg:w-[55%] w-full">
           Join store owners who are already using this free tool. No payment, no
           trial, no strings attached - just sign up and start managing your
           store!
@@ -43,7 +43,7 @@ export default function Action() {
             Sign In
           </Button>
         </div>
-        <div className="flex flex-row gap-8">
+        <div className="flex sm:flex-row flex-col gap-8">
           <Chip className="flex flex-row gap-2 items-center px-0 ">
             <CircleCheck className="text-green-500 font-bold" />
             <p className="text-lg font-normal">100% Free</p>
