@@ -1,19 +1,21 @@
 import Wrapper from "@/components/common/Wrapper";
 import { Button } from "@/components/ui/button";
+import Chip from "@/components/ui/chip";
 import { useNavigate } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CircleCheck } from "lucide-react";
 
 export default function Action() {
   const navigate = useNavigate();
   return (
     <div className="min-h-56 items-center py-20  bg-white dark:bg-gray-900 transition-colors duration-300 px-8">
-      <Wrapper className="flex flex-col gap-7">
+      <Wrapper className="flex flex-col gap-12 items-center">
         <h2 className="sm:text-5xl text-2xl font-bold text-center">
-          Ready to Transform Your Store?
+          Ready to Get Started?
         </h2>
-        <p className="sm:text-xl text-lg text-(--subtext) text-center">
-          Sign up today—100% free, made to help Filipino store owners grow their
-          business.
+        <p className="sm:text-xl text-lg text-(--subtext) text-center w-[650px]">
+          Join store owners who are already using this free tool. No payment, no
+          trial, no strings attached - just sign up and start managing your
+          store!
         </p>
         <div className="flex sm:flex-row flex-col gap-4 justify-center">
           <Button
@@ -25,7 +27,7 @@ export default function Action() {
             }
           >
             <span className="flex flex-row items-center">
-              Get Started for Free
+              Start Using for Free
               <ArrowRight className="ml-2 h-6 w-6" />
             </span>
           </Button>
@@ -40,6 +42,20 @@ export default function Action() {
           >
             Sign In
           </Button>
+        </div>
+        <div className="flex flex-row gap-8">
+          <Chip className="flex flex-row gap-2 items-center px-0 ">
+            <CircleCheck className="text-green-500 font-bold" />
+            <p className="text-lg font-normal">100% Free</p>
+          </Chip>
+          <Chip className="flex flex-row gap-2 items-center px-0 ">
+            <CircleCheck className="text-green-500 font-bold" />
+            <p className="text-lg font-normal">No Credit Card</p>
+          </Chip>
+          <Chip className="flex flex-row gap-2 items-center px-0 ">
+            <CircleCheck className="text-green-500 font-bold" />
+            <p className="text-lg font-normal">No Ads</p>
+          </Chip>
         </div>
       </Wrapper>
     </div>

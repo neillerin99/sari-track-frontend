@@ -8,7 +8,7 @@ export default function Chip({ className, ...props }: ChipProps) {
   return (
     <div
       className={cn(
-        "px-4 py-2 rounded-full text-center font-bold text-white w-fit",
+        "rounded-full text-center font-bold text-white w-fit",
         className
       )}
       {...props}
