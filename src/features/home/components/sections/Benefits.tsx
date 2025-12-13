@@ -1,9 +1,10 @@
 import Wrapper from "@/components/common/Wrapper";
 import { benefits } from "../../utils/benefits";
-import BenefitsRow from "../ui/BenefitsRow";
 import { testimonials } from "../../utils/testimonial";
 import type { BenefitTestimonial } from "../../../../models/Testimonial";
 import BenefitsTestimonialRow from "../ui/BenefitsTestimonialRow";
+import Chip from "@/components/ui/chip";
+import { CircleCheck } from "lucide-react";
 
 export default function Benefits() {
   return (
@@ -27,7 +28,10 @@ function BenefitHighlights() {
         business with our system
       </p>
       {benefits.map((benefit: string) => (
-        <BenefitsRow text={benefit} />
+        <Chip className="flex flex-row gap-2 items-center px-0 ">
+          <CircleCheck className="text-green-500 font-bold" />
+          <p className="text-lg font-normal">{benefit}</p>
+        </Chip>
       ))}
     </div>
   );

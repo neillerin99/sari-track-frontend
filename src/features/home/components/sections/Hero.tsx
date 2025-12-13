@@ -21,7 +21,7 @@ function InfoSection() {
   const navigate = useNavigate();
   return (
     <div className="flex flex-col justify-center h-full gap-7 flex-1">
-      <Chip className="bg-linear-to-r from-(--text-gradient-from) to-(--text-gradient-to) dark:from-(--text-gradient-from) dark:to-(--text-gradient-to)">
+      <Chip className="px-4 py-2 bg-linear-to-r from-(--text-gradient-from) to-(--text-gradient-to) dark:from-(--text-gradient-from) dark:to-(--text-gradient-to)">
         ✨ Mordern POS System
       </Chip>
       <h1 className="text-5xl font-bold ">
