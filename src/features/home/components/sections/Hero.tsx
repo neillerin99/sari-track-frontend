@@ -5,7 +5,7 @@ import Wrapper from "../../../../components/common/Wrapper";
 import { Clock, Package, ShoppingCart, TrendingUp, Users } from "lucide-react";
 import StatsCard from "../../../../components/ui/stats-card";
 import StatsRow from "../../../../components/ui/stats-row";
-
+import { motion } from "framer-motion";
 export default function Hero() {
   return (
     <div className="p-4 min-h-fit bg-linear-to-br from-(--gradient-from) via-(--gradient-via) to-(--gradient-to) transition-colors duration-300  bg-blend-soft-light">
@@ -20,7 +20,12 @@ export default function Hero() {
 function InfoSection() {
   const navigate = useNavigate();
   return (
-    <div className="flex flex-col justify-center h-full gap-7 flex-1">
+    <motion.div
+      initial={{ opacity: 0, x: -50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.6 }}
+      className="flex flex-col justify-center h-full gap-7 flex-1"
+    >
       <Chip className="px-4 py-2 bg-linear-to-r from-(--text-gradient-from) to-(--text-gradient-to) dark:from-(--text-gradient-from) dark:to-(--text-gradient-to)">
         ✨ Mordern POS System
       </Chip>
@@ -64,13 +69,18 @@ function InfoSection() {
         <StatsCard text="k+" target={50} statsText="Transactions" />
         <StatsCard text="%" target={99} statsText="Uptime" />
       </div>
-    </div>
+    </motion.div>
   );
 }
 
 function StatsSection() {
   return (
-    <div className="flex-1 flex items-center justify-center w-full min-h-64 lg:min-h-[400px] rounded-2xl relative bg-white dark:bg-gray-800 border border-blue-100 dark:border-gray-700">
+    <motion.div
+      initial={{ opacity: 0, x: 50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.6, delay: 0.2 }}
+      className="flex-1 flex items-center justify-center w-full min-h-64 lg:min-h-[400px] rounded-2xl relative bg-white dark:bg-gray-800 border border-blue-100 dark:border-gray-700"
+    >
       <div className="bg-linear-to-r from-(--text-gradient-from) to-(--text-gradient-to) dark:from-(--text-gradient-from) dark:to-(--text-gradient-to) p-4 rounded-3xl shadow-xl absolute -top-10 -right-4">
         <TrendingUp className="h-9 w-9 text-white" />
       </div>
@@ -106,10 +116,13 @@ function StatsSection() {
           <StatsRow.Indicator variant={"positive"}>+8</StatsRow.Indicator>
         </StatsRow>
       </div>
-
-      <div className="bg-linear-to-r from-(--text-gradient-from) to-(--text-gradient-to) dark:from-(--text-gradient-from) dark:to-(--text-gradient-to) p-4 rounded-3xl shadow-xl absolute -bottom-10 -left-5">
+      <motion.div
+        animate={{ y: [0, -10, 0] }}
+        transition={{ duration: 3, repeat: Infinity }}
+        className="bg-linear-to-r from-(--text-gradient-from) to-(--text-gradient-to) dark:from-(--text-gradient-from) dark:to-(--text-gradient-to) p-4 rounded-3xl shadow-xl absolute -bottom-10 -left-5"
+      >
         <Clock className="h-9 w-9 text-white" />
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

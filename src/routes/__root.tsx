@@ -8,7 +8,7 @@ export const Route = createRootRoute({
     <>
       <HeadContent />
       <ThemeProvider>
-        <div className="min-h-screen flex">
+        <div className="min-h-screen flex scroll-smooth">
           <div className="flex-1 flex flex-col">
             <Outlet />
           </div>
