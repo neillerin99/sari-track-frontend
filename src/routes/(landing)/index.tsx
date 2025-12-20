@@ -3,6 +3,7 @@ import Benefits from "@/features/home/components/sections/Benefits";
 import Feature from "@/features/home/components/sections/Feature";
 import Hero from "@/features/home/components/sections/Hero";
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
 
 export const Route = createFileRoute("/(landing)/")({
   head: () => ({
@@ -20,6 +21,9 @@ export const Route = createFileRoute("/(landing)/")({
 });
 
 function App() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Hero />
