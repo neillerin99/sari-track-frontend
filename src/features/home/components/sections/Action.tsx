@@ -46,15 +46,17 @@ export default function Action() {
         <div className="flex sm:flex-row flex-col gap-8">
           <Chip className="flex flex-row gap-2 items-center px-0 ">
             <CircleCheck className="text-green-500 font-bold" />
-            <p className="text-lg font-normal">100% Free</p>
+            <p className="text-lg font-normal text-(--subtext)">100% Free</p>
           </Chip>
           <Chip className="flex flex-row gap-2 items-center px-0 ">
             <CircleCheck className="text-green-500 font-bold" />
-            <p className="text-lg font-normal">No Credit Card</p>
+            <p className="text-lg font-normal text-(--subtext)">
+              No Credit Card
+            </p>
           </Chip>
           <Chip className="flex flex-row gap-2 items-center px-0 ">
             <CircleCheck className="text-green-500 font-bold" />
-            <p className="text-lg font-normal">No Ads</p>
+            <p className="text-lg font-normal text-(--subtext)">No Ads</p>
           </Chip>
         </div>
       </Wrapper>
