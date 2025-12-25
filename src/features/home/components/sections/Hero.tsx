@@ -8,8 +8,8 @@ import StatsRow from "../../../../components/ui/stats-row";
 import { motion } from "framer-motion";
 export default function Hero() {
   return (
-    <div className="p-4 min-h-fit bg-linear-to-br from-(--gradient-from) via-(--gradient-via) to-(--gradient-to) transition-colors duration-300  bg-blend-soft-light">
-      <Wrapper className="flex lg:flex-row flex-col  items-center justify-start sm:py-0 py-5 lg:gap-7 md:gap-15 gap-14 lg:my-34 md:my-20 my-1">
+    <div className="p-4 min-h-screen bg-linear-to-br from-(--gradient-from) via-(--gradient-via) to-(--gradient-to) transition-colors duration-300  bg-blend-soft-light">
+      <Wrapper className="flex lg:flex-row flex-col items-center justify-start sm:py-0 py-5 lg:gap-7 md:gap-15 gap-14 lg:my-30 md:my-20 my-2">
         <InfoSection />
         <StatsSection />
       </Wrapper>
