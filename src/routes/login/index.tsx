@@ -5,9 +5,27 @@ import { ChevronLeft } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useForm, type SubmitHandler } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
 export const Route = createFileRoute("/login/")({
   component: RouteComponent,
 });
+
+export const schema = z.object({
+  email: z
+    .string()
+    .min(1, { message: "Email is required" })
+    .email({ message: "Please enter a valid email address" }),
+
+  password: z
+    .string()
+    .min(1, { message: "Password is required" })
+    .min(8, { message: "Password must be at least 8 characters" }),
+});
+
+type FormFields = z.infer<typeof schema>;
 
 function RouteComponent() {
   const navigate = useNavigate();
@@ -35,17 +53,66 @@ function RouteComponent() {
 }
 
 function LoginForm() {
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors, isSubmitting },
+  } = useForm<FormFields>({
+    resolver: zodResolver(schema),
+  });
+
+  const onSubmit: SubmitHandler<FormFields> = async (data) => {
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      throw new Error();
+      console.log(data);
+    } catch (e) {
+      // setError("email", {
+      //   message: "This email is already taken",
+      // });
+      setError("root", {
+        message: "Invalid login credentials!",
+      });
+    }
+  };
+
   return (
     <div className="h-fit p-4 lg:w-1/3 w-full rounded-lg flex flex-col items-center bg-white dark:bg-gray-900 shadow-xl mt-5">
       <h2 className="font-bold text-xl">Sign In</h2>
-      <form className="w-full mt-10 flex flex-col gap-6">
-        <div className="flex flex-col gap-4">
+      {errors.root && (
+        <p className="text-red-500 text-sm text-center mt-4">
+          {errors.root.message}
+        </p>
+      )}
+      <form
+        className="w-full mt-8 flex flex-col gap-6"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <div className="flex flex-col">
           <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" placeholder="you@example.com" />
+          <Input
+            {...register("email")}
+            id="email"
+            placeholder="you@example.com"
+            className="mt-4 mb-1"
+          />
+          {errors.email && (
+            <p className="text-red-500 text-sm">{errors.email.message}</p>
+          )}
         </div>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col">
           <Label htmlFor="password">Password</Label>
-          <Input id="password" type="password" placeholder="••••••••" />
+          <Input
+            {...register("password")}
+            id="password"
+            type="password"
+            placeholder="••••••••"
+            className="mt-4 mb-1"
+          />
+          {errors.password && (
+            <p className="text-red-500 text-sm">{errors.password.message}</p>
+          )}
         </div>
         <div className="flex justify-between">
           <div className="flex gap-2 items-center">
@@ -58,9 +125,13 @@ function LoginForm() {
             Forgot password?
           </Button>
         </div>
-        <Button className="w-full cursor-pointer bg-linear-to-r from-blue-600 to-cyan-600 dark:from-blue-500 dark:to-cyan-500 hover:from-blue-700 hover:to-cyan-700 dark:hover:from-blue-600 dark:hover:to-cyan-600 text-white font-semibold">
-          Sign In
+        <Button
+          disabled={isSubmitting}
+          className="w-full cursor-pointer bg-linear-to-r from-blue-600 to-cyan-600 dark:from-blue-500 dark:to-cyan-500 hover:from-blue-700 hover:to-cyan-700 dark:hover:from-blue-600 dark:hover:to-cyan-600 text-white font-semibold"
+        >
+          {isSubmitting ? "Loading" : "Sign In"}
         </Button>
+
         <p className="text-sm text-(--subtext) text-center">
           Don't have an account?
           <span>
