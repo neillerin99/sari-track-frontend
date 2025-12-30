@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { ChevronLeft, Mail } from "lucide-react";
 import { useForm, type SubmitHandler } from "react-hook-form";
-import { email, z } from "zod";
+import { z } from "zod";
 
 export const Route = createFileRoute("/signup/")({
   component: Signup,
