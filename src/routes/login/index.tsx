@@ -1,7 +1,7 @@
 import Wrapper from "@/components/common/Wrapper";
 import { Button } from "@/components/ui/button";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { ChevronLeft, Eye, EyeOff } from "lucide-react";
+import { ChevronLeft, Eye, EyeOff, Mail, Lock } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -99,12 +99,16 @@ function LoginForm() {
       >
         <div className="flex flex-col">
           <Label htmlFor="email">Email</Label>
-          <Input
-            {...register("email")}
-            id="email"
-            placeholder="you@example.com"
-            className="mt-4 mb-1"
-          />
+          <div className="relative mt-4 mb-1 flex">
+            <Mail className="absolute top-0 left-2 h-full w-5 text-gray-500" />
+            <Input
+              {...register("email")}
+              id="email"
+              placeholder="you@example.com"
+              className="pl-10"
+            />
+          </div>
+
           {errors.email && (
             <p className="text-red-500 text-sm">{errors.email.message}</p>
           )}
@@ -112,11 +116,13 @@ function LoginForm() {
         <div className="flex flex-col">
           <Label htmlFor="password">Password</Label>
           <div className="relative mt-4 mb-1">
+            <Lock className="absolute top-0 left-2 h-full w-5 text-gray-500" />
             <Input
               {...register("password")}
               id="password"
               type={showPassword ? "text" : "password"}
               placeholder="••••••••"
+              className="pr-10 pl-10"
             />
             <Button
               className="absolute top-0 right-0 cursor-pointer"
@@ -125,7 +131,11 @@ function LoginForm() {
               type="button"
               onClick={() => setShowPassword(!showPassword)}
             >
-              {showPassword ? <EyeOff /> : <Eye />}
+              {showPassword ? (
+                <EyeOff className="text-gray-500" />
+              ) : (
+                <Eye className="text-gray-500" />
+              )}
             </Button>
           </div>
           {errors.password && (
