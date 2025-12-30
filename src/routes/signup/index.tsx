@@ -67,9 +67,7 @@ function SignupForm() {
           id={"email"}
           register={register}
           placeholder={"you@example.com"}
-          icon={
-            <Mail className="absolute top-0 left-2 h-full w-5 text-gray-500" />
-          }
+          icon={<Mail className="h-full w-5 text-gray-500" />}
           error={errors.email}
         />
         <Button

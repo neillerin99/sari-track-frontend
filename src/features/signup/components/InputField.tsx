@@ -43,7 +43,7 @@ export default function InputField<TFormValues extends FieldValues>({
           id={String(id)}
           type={type}
           placeholder={placeholder}
-          className="pl-10"
+          className="pl-9"
         />
       </div>
       {error && <p className="text-red-500 text-sm">{error.message}</p>}
