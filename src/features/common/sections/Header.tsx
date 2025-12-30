@@ -44,7 +44,7 @@ export default function Header() {
               className="cursor-pointer"
               onClick={() =>
                 navigate({
-                  to: "/about",
+                  to: "/signup",
                 })
               }
             >
@@ -80,7 +80,7 @@ function MobileSheet() {
               variant={"ghost"}
               onClick={() =>
                 navigate({
-                  to: "/about",
+                  to: "/login",
                 })
               }
             >
@@ -90,7 +90,7 @@ function MobileSheet() {
               className="cursor-pointer"
               onClick={() =>
                 navigate({
-                  to: "/about",
+                  to: "/signup",
                 })
               }
             >

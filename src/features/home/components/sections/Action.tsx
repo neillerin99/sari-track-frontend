@@ -22,7 +22,7 @@ export default function Action() {
             className="cursor-pointer px-4 py-6 font-bold text-lg bg-linear-to-r from-(--text-gradient-from) to-(--text-gradient-to) dark:from-(--text-gradient-from) dark:to-(--text-gradient-to) hover:scale-105"
             onClick={() =>
               navigate({
-                to: "/about",
+                to: "/signup",
               })
             }
           >

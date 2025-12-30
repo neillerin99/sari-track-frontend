@@ -57,7 +57,7 @@ function InfoSection() {
           variant={"outline"}
           onClick={() =>
             navigate({
-              to: "/about",
+              to: "/signup",
             })
           }
         >

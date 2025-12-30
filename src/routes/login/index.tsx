@@ -11,7 +11,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 
 export const Route = createFileRoute("/login/")({
-  component: RouteComponent,
+  component: Login,
 });
 
 export const loginSchema = z.object({
@@ -30,7 +30,7 @@ export const loginSchema = z.object({
 
 type FormFields = z.infer<typeof loginSchema>;
 
-function RouteComponent() {
+function Login() {
   const navigate = useNavigate();
   return (
     <section className="h-full bg-linear-to-br from-(--gradient-from) via-(--gradient-via) to-(--gradient-to) transition-colors duration-300  bg-blend-soft-light">
