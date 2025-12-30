@@ -1,18 +1,10 @@
 import Wrapper from "@/components/common/Wrapper";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import InputField from "@/features/signup/components/InputField";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Label } from "@radix-ui/react-label";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { ChevronLeft, Mail } from "lucide-react";
-import {
-  useForm,
-  type FieldValues,
-  type RegisterOptions,
-  type SubmitHandler,
-  type UseFormRegisterReturn,
-} from "react-hook-form";
+import { useForm, type SubmitHandler } from "react-hook-form";
 import { email, z } from "zod";
 
 export const Route = createFileRoute("/signup/")({
