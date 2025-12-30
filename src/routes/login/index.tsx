@@ -1,19 +1,20 @@
 import Wrapper from "@/components/common/Wrapper";
 import { Button } from "@/components/ui/button";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Eye, EyeOff } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { useForm, type SubmitHandler } from "react-hook-form";
+import { Controller, useForm, type SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 
 export const Route = createFileRoute("/login/")({
   component: RouteComponent,
 });
 
-export const schema = z.object({
+export const loginSchema = z.object({
   email: z
     .string()
     .min(1, { message: "Email is required" })
@@ -23,9 +24,11 @@ export const schema = z.object({
     .string()
     .min(1, { message: "Password is required" })
     .min(8, { message: "Password must be at least 8 characters" }),
+
+  rememberMe: z.boolean(),
 });
 
-type FormFields = z.infer<typeof schema>;
+type FormFields = z.infer<typeof loginSchema>;
 
 function RouteComponent() {
   const navigate = useNavigate();
@@ -58,15 +61,20 @@ function LoginForm() {
     handleSubmit,
     setError,
     formState: { errors, isSubmitting },
+    control,
   } = useForm<FormFields>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      rememberMe: false,
+    },
   });
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
+      console.log(data);
       await new Promise((resolve) => setTimeout(resolve, 1000));
       throw new Error();
-      console.log(data);
     } catch (e) {
       // setError("email", {
       //   message: "This email is already taken",
@@ -103,20 +111,41 @@ function LoginForm() {
         </div>
         <div className="flex flex-col">
           <Label htmlFor="password">Password</Label>
-          <Input
-            {...register("password")}
-            id="password"
-            type="password"
-            placeholder="••••••••"
-            className="mt-4 mb-1"
-          />
+          <div className="relative mt-4 mb-1">
+            <Input
+              {...register("password")}
+              id="password"
+              type={showPassword ? "text" : "password"}
+              placeholder="••••••••"
+            />
+            <Button
+              className="absolute top-0 right-0 cursor-pointer"
+              size={"icon"}
+              variant={"ghost"}
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <EyeOff /> : <Eye />}
+            </Button>
+          </div>
           {errors.password && (
             <p className="text-red-500 text-sm">{errors.password.message}</p>
           )}
         </div>
         <div className="flex justify-between">
           <div className="flex gap-2 items-center">
-            <Checkbox id="remember" />
+            <Controller
+              name="rememberMe"
+              control={control}
+              defaultValue={false}
+              render={({ field }) => (
+                <Checkbox
+                  id="remember"
+                  checked={field.value}
+                  onCheckedChange={(checked) => field.onChange(checked)}
+                />
+              )}
+            />
             <Label htmlFor="remember" className="text-xs">
               Remember me
             </Label>
