@@ -9,6 +9,7 @@ import { Controller, useForm, type SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import { Spinner } from "@/components/ui/spinner";
 
 export const Route = createFileRoute("/login/")({
   component: Login,
@@ -24,7 +25,6 @@ export const loginSchema = z.object({
     .string()
     .min(1, { message: "Password is required" })
     .min(8, { message: "Password must be at least 8 characters" }),
-
   rememberMe: z.boolean(),
 });
 
@@ -168,7 +168,7 @@ function LoginForm() {
           disabled={isSubmitting}
           className="w-full cursor-pointer bg-linear-to-r from-blue-600 to-cyan-600 dark:from-blue-500 dark:to-cyan-500 hover:from-blue-700 hover:to-cyan-700 dark:hover:from-blue-600 dark:hover:to-cyan-600 text-white font-semibold"
         >
-          {isSubmitting ? "Loading" : "Sign In"}
+          {isSubmitting ? <Spinner /> : "Sign In"}
         </Button>
 
         <p className="text-sm text-(--subtext) text-center">
