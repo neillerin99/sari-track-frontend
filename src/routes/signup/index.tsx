@@ -1,6 +1,7 @@
 import Wrapper from "@/components/common/Wrapper";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
+import FileUploadField from "@/features/signup/components/FileUploadField";
 import InputField from "@/features/signup/components/InputField";
 import { signupSchema, type SignupFormFields } from "@/schemas/signup.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -29,9 +30,11 @@ function Signup() {
           <ChevronLeft size={10} />
           Back
         </Button>
-        <h1 className="font-bold text-2xl">Create Account</h1>
-        <p className="text-(--subtext)">Start managing your store for free</p>
-        <SignupForm />
+        <div className="flex flex-col w-full items-center mt-10">
+          <h1 className="font-bold text-2xl">Create Account</h1>
+          <p className="text-(--subtext)">Start managing your store for free</p>
+          <SignupForm />
+        </div>
       </Wrapper>
     </section>
   );
@@ -43,10 +46,13 @@ function SignupForm() {
     formState: { errors, isSubmitting },
     handleSubmit,
     setError,
+    watch,
+    setValue,
   } = useForm<SignupFormFields>({
     resolver: zodResolver(signupSchema),
     mode: "onChange",
   });
+  const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<SignupFormFields> = async (data) => {
     try {
@@ -72,6 +78,13 @@ function SignupForm() {
         className="w-full mt-8 flex flex-col gap-4"
         onSubmit={handleSubmit(onSubmit)}
       >
+        <FileUploadField
+          watch={watch}
+          register={register}
+          error={errors.profile}
+          setValue={setValue}
+          id="profile"
+        />
         <div className="flex sm:gap-2 gap-4 sm:flex-row flex-col basis-1/2">
           <InputField
             label={"First Name"}
@@ -125,6 +138,23 @@ function SignupForm() {
           {isSubmitting ? <Spinner /> : "Sign In"}
         </Button>
       </form>
+      <p className="text-sm text-(--subtext) text-center mt-4">
+        Already have an account?
+        <span>
+          <Button
+            className="p-0 cursor-pointer px-2"
+            variant={"link"}
+            type="button"
+            onClick={() =>
+              navigate({
+                to: "/login",
+              })
+            }
+          >
+            Sign In
+          </Button>
+        </span>
+      </p>
     </div>
   );
 }

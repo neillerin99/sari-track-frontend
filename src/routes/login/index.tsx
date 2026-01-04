@@ -68,8 +68,8 @@ function LoginForm() {
       rememberMe: false,
     },
   });
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState<boolean>(false);
-
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
       console.log(data);
@@ -174,7 +174,16 @@ function LoginForm() {
         <p className="text-sm text-(--subtext) text-center">
           Don't have an account?
           <span>
-            <Button className="p-0 cursor-pointer px-2" variant={"link"}>
+            <Button
+              className="p-0 cursor-pointer px-2"
+              variant={"link"}
+              type="button"
+              onClick={() =>
+                navigate({
+                  to: "/signup",
+                })
+              }
+            >
               Sign Up
             </Button>
           </span>
