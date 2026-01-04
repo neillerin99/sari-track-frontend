@@ -33,6 +33,26 @@ export const signupSchema = z.object({
             message: "Password must include at least 1 special character",
         }),
     confirmPassword: z.string().min(1, { message: "Confirm your password" }),
+    profile: z
+        .custom<FileList | null>()
+        .optional()
+        .nullable()
+        .refine(
+            (files) => !files || files.length === 0 || files[0] instanceof File,
+            { message: "Invalid file" }
+        )
+        .refine(
+            (files) => !files || files.length === 0 || files[0].size <= 5_000_000,
+            { message: "Max file size is 5MB" }
+        )
+        .refine(
+            (files) =>
+                !files ||
+                files.length === 0 ||
+                ["image/jpeg", "image/png"].includes(files[0].type),
+            { message: "Only JPG or PNG images allowed" }
+        ),
+
 }).refine((data) => data.password === data.confirmPassword, {
     path: ['confirmPassword'],
     error: 'Passwords do not match'
